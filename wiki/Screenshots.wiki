@@ -1,0 +1,6 @@
+#summary QWebDev Screenshots
+#labels Phase-Design,Featured
+
+= 0.1 Alpha =
+
+http://qwebdev.googlecode.com/svn/trunk/screenshots/screenshot-editing-alpha.png

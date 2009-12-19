@@ -1,0 +1,12 @@
+#summary Instructions on how to Compile QWebDev for developers.
+#labels Phase-Implementation,Phase-Deploy
+
+= The easy way =
+
+Open the project file in Qt Creator and click Build or Run.
+
+= The hard way =
+
+  # Run qmake-qt4/qmake (depending on OS)
+  # Run make
+  # Run ./QWebDev

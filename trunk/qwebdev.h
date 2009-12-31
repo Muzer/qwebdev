@@ -52,10 +52,12 @@ private slots:
 	void tChanged();
 	void showWebsite(QString url);
 
-	void newTextFile();
+	void newTextFile(QString title = "New File");
+	void newHtmlFile();
 	void open();
-	void save();
+	bool save(int id = -1);
 	void saveAs();
+	void saveAll();
 	void closeFile();
 
 	void preview();

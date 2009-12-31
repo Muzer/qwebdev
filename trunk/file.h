@@ -7,8 +7,11 @@
 
 class File : public QTextEdit
 {
+	Q_OBJECT
+
 public:
 	File(QString title = "New File", QIcon icon = QIcon());
+	~File();
 	QIcon icon();
 	QString title();
 	QString text();

@@ -6,6 +6,13 @@ PreviewWindow::PreviewWindow(QWidget *parent) :
     ui(new Ui::PreviewWindow)
 {
     ui->setupUi(this);
+	connect(ui->pushButton, SIGNAL(clicked()), ui->webView, SLOT(back()));
+	connect(ui->pushButton_2, SIGNAL(clicked()), ui->webView, SLOT(forward()));
+	connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(go()));
+	connect(ui->webView, SIGNAL(titleChanged(QString)), this, SLOT(webViewTitleChanged(QString)));
+	connect(ui->webView, SIGNAL(urlChanged(QUrl)), this, SLOT(webViewUrlChanged(QUrl)));
+
+	this->resize(800, 600);
 }
 
 PreviewWindow::~PreviewWindow()
@@ -27,8 +34,7 @@ void PreviewWindow::changeEvent(QEvent *e)
 
 void PreviewWindow::resizeEvent(QResizeEvent *event)
 {
-	ui->webView->resize(event->size());
-	event->accept();
+	ui->verticalLayoutWidget->resize(event->size());
 }
 
 void PreviewWindow::setPage(QString page)
@@ -44,6 +50,19 @@ void PreviewWindow::setPage(QString page)
 void PreviewWindow::setUrl(QString url)
 {
 	ui->webView->load(QUrl(url));
-	this->setWindowTitle(url);
-	this->resize(800, 600);
+}
+
+void PreviewWindow::webViewTitleChanged(QString title)
+{
+	this->setWindowTitle(title);
+}
+
+void PreviewWindow::webViewUrlChanged(QUrl url)
+{
+	ui->lineEdit->setText(url.toString());
+}
+
+void PreviewWindow::go()
+{
+	this->setUrl(ui->lineEdit->text());
 }

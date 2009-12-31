@@ -25,6 +25,11 @@ protected:
 
 private:
     Ui::PreviewWindow *ui;
+
+private slots:
+	void webViewTitleChanged(QString title);
+	void webViewUrlChanged(QUrl url);
+	void go();
 };
 
 #endif // PREVIEWWINDOW_H

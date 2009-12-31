@@ -7,40 +7,83 @@ QWebDev::QWebDev(QWidget *parent) :
 {
     ui->setupUi(this);
 
+	//ui->menuNew->setIcon(QIcon::fromTheme("document-new", ":/icons/16x16/document-new.png"));
+	ui->menuNew->setIcon(QIcon(":/icons/16x16/document-new.png"));
+
+	//ui->actionNewTextFile->setIcon(QIcon::fromTheme("text-plain", ":/icons/16x16/text-plain.png"));
+	ui->actionNewTextFile->setIcon(QIcon(":/icons/16x16/text-plain.png"));
+
+	//ui->actionNewHtmlFile->setIcon(QIcon::fromTheme("text-html", ":/icons/16x16/text-html.png"));
+	ui->actionNewHtmlFile->setIcon(QIcon(":/icons/16x16/text-html.png"));
+
+	//ui->actionOpen->setIcon(QIcon::fromTheme("document-open", ":/icons/16x16/document-open.png"));
+	ui->actionOpen->setIcon(QIcon(":/icons/16x16/document-open.png"));
+
+	//ui->actionSave->setIcon(QIcon::fromTheme("document-save", ":/icons/16x16/document-save.png"));
+	ui->actionSave->setIcon(QIcon(":/icons/16x16/document-save.png"));
+
+	//ui->actionSaveAs->setIcon(QIcon::fromTheme("document-save-as", ":/icons/16x16/document-save-as.png"));
+	ui->actionSaveAs->setIcon(QIcon(":/icons/16x16/document-save-as.png"));
+
+	//ui->actionSaveAll->setIcon(QIcon::fromTheme("document-save-all", ":/icons/16x16/document-save-all.png"));
+	ui->actionSaveAll->setIcon(QIcon(":/icons/16x16/document-save-all.png"));
+
+	//ui->actionCloseFile->setIcon(QIcon::fromTheme("document-close", ":/icons/16x16/document-close.png"));
+	ui->actionCloseFile->setIcon(QIcon(":/icons/16x16/document-close.png"));
+
+	//ui->actionQuit->setIcon(QIcon::fromTheme("application-exit", ":/icons/16x16/application-exit.png"));
+	ui->actionQuit->setIcon(QIcon(":/icons/16x16/application-exit.png"));
+
+
+	//ui->actionPreview->setIcon(QIcon::fromTheme("video-display", ":/icons/16x16/video-display.png"));
+	ui->actionPreview->setIcon(QIcon(":/icons/16x16/video-display.png"));
+
+
+	//ui->actionValidateWebpage->setIcon(QIcon::fromTheme("run-build-configure", ":/icons/16x16/run-build-configure.png"));
+	ui->actionValidateWebpage->setIcon(QIcon(":/icons/16x16/run-build-configure.png"));
+
+
+	//ui->actionHelp->setIcon(QIcon::fromTheme("help-contents", ":/icons/16x16/help-contents.png"));
+	ui->actionHelp->setIcon(QIcon(":/icons/16x16/help-contents.png"));
+
+	//ui->actionAbout->setIcon(QIcon::fromTheme("help-about", ":/icons/16x16/help-about.png"));
+	ui->actionAbout->setIcon(QIcon(":/icons/16x16/help-about.png"));
+
 	mainToolbar = new QToolBar("Main Toolbar", this);
 	mainToolbar->setFloatable(false);
 	mainToolbar->setMovable(false);
+	mainToolbar->setIconSize(QSize(22, 22));
 
 	btnNewTextFile = new QToolButton(this);
-	//btnNew->setIcon(QIcon::fromTheme("document-new"));
-	btnNewTextFile->setText("New");
+	//btnNewTextFile->setIcon(QIcon::fromTheme("document-new", ":/icons/22x22/document-new.png"));
+	btnNewTextFile->setIcon(QIcon(":/icons/22x22/document-new.png"));
 	mainToolbar->addWidget(btnNewTextFile);
 
 	btnOpen = new QToolButton(this);
-	//btnNew->setIcon(QIcon::fromTheme("document-new"));
-	btnOpen->setText("Open");
+	//btnOpen->setIcon(QIcon::fromTheme("document-open", ":/icons/22x22/document-open.png"));
+	btnOpen->setIcon(QIcon(":/icons/22x22/document-open.png"));
 	mainToolbar->addWidget(btnOpen);
 
 	btnSave = new QToolButton(this);
-	//btnNew->setIcon(QIcon::fromTheme("document-new"));
-	btnSave->setText("Save");
+	//btnSave->setIcon(QIcon::fromTheme("document-save", ":/icons/22x22/document-save.png"));
+	btnSave->setIcon(QIcon(":/icons/22x22/document-save.png"));
 	mainToolbar->addWidget(btnSave);
 
 	btnSaveAs = new QToolButton(this);
-	//btnNew->setIcon(QIcon::fromTheme("document-new"));
-	btnSaveAs->setText("Save As");
+	//btnSaveAs->setIcon(QIcon::fromTheme("document-save-as", ":/icons/22x22/document-save-as.png"));
+	btnSaveAs->setIcon(QIcon(":/icons/22x22/document-save-as.png"));
 	mainToolbar->addWidget(btnSaveAs);
 
 	btnCloseFile = new QToolButton(this);
-	//btnNew->setIcon(QIcon::fromTheme("document-new"));
-	btnCloseFile->setText("Close File");
+	//btnCloseFile->setIcon(QIcon::fromTheme("document-close", ":/icons/22x22/document-close.png"));
+	btnCloseFile->setIcon(QIcon(":/icons/22x22/document-close.png"));
 	mainToolbar->addWidget(btnCloseFile);
 
 	mainToolbar->addSeparator();
 
 	btnPreview = new QToolButton(this);
-	//btnNew->setIcon(QIcon::fromTheme("document-new"));
-	btnPreview->setText("Preview");
+	//btnPreview->setIcon(QIcon::fromTheme("video-display", ":/icons/22x22/video-display.png"));
+	btnPreview->setIcon(QIcon(":/icons/22x22/video-display.png"));
 	mainToolbar->addWidget(btnPreview);
 
 	mainToolbar->move(0, ui->menuBar->height());
@@ -53,6 +96,8 @@ QWebDev::QWebDev(QWidget *parent) :
 	connect(btnNewTextFile, SIGNAL(clicked()), this, SLOT(newTextFile()));
 	connect(ui->actionNewTextFile, SIGNAL(triggered()), this, SLOT(newTextFile()));
 
+	connect(ui->actionNewHtmlFile, SIGNAL(triggered()), this, SLOT(newHtmlFile()));
+
 	connect(btnOpen, SIGNAL(clicked()), this, SLOT(open()));
 	connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(open()));
 
@@ -61,6 +106,8 @@ QWebDev::QWebDev(QWidget *parent) :
 
 	connect(btnSaveAs, SIGNAL(clicked()), this, SLOT(saveAs()));
 	connect(ui->actionSaveAs, SIGNAL(triggered()), this, SLOT(saveAs()));
+
+	connect(ui->actionSaveAll, SIGNAL(triggered()), this, SLOT(saveAll()));
 
 	connect(btnCloseFile, SIGNAL(clicked()), this, SLOT(closeFile()));
 	connect(ui->actionCloseFile, SIGNAL(triggered()), this, SLOT(closeFile()));
@@ -79,7 +126,9 @@ QWebDev::QWebDev(QWidget *parent) :
 
 	connect(ui->actionW3Schools, SIGNAL(triggered()), this, SLOT(showW3Schools()));
 	connect(ui->actionDaniweb, SIGNAL(triggered()), this, SLOT(showDaniweb()));
-	connect(ui->actionW3_Consortium, SIGNAL(triggered()), this, SLOT(showW3Consortium()));
+	connect(ui->actionW3Consortium, SIGNAL(triggered()), this, SLOT(showW3Consortium()));
+
+	this->newTextFile();
 }
 
 QWebDev::~QWebDev()
@@ -125,13 +174,24 @@ void QWebDev::showWebsite(QString url)
 	w->show();
 }
 
-void QWebDev::newTextFile()
+void QWebDev::newTextFile(QString title)
 {
-	File *file = new File();
+	File *file = new File(title);
 	file->setChanged(true);
 	connect(file, SIGNAL(textChanged()), this, SLOT(tChanged()));
 	openFiles.append(file);
 	tabs->addTab(file, file->title());
+	tabs->setCurrentIndex(openFiles.length() - 1);
+}
+
+void QWebDev::newHtmlFile()
+{
+	QFile fp(":/defaults/html.txt");
+	fp.open(QIODevice::ReadOnly | QIODevice::Text);
+	QString text = fp.readAll();
+	fp.close();
+	this->newTextFile("New HTML File");
+	openFiles[openFiles.length() - 1]->setText(text);
 }
 
 void QWebDev::open()
@@ -154,13 +214,18 @@ void QWebDev::open()
 	tabs->addTab(file, file->title());
 }
 
-void QWebDev::save()
+bool QWebDev::save(int id)
 {
-	if (tabs->currentIndex() == -1)
+	int index = id;
+	if (index == -1)
 	{
-		return;
+		index = tabs->currentIndex();
 	}
-	File *file = openFiles[tabs->currentIndex()];
+	if (index == -1)
+	{
+		return false;
+	}
+	File *file = openFiles[index];
 	QString filename = file->filename();
 	if (file->filename() == "none")
 	{
@@ -168,7 +233,7 @@ void QWebDev::save()
 	}
 	if (filename.length() == 0)
 	{
-		return;
+		return false;
 	}
 	QFile fp(filename);
 	fp.open(QIODevice::WriteOnly | QIODevice::Text);
@@ -181,7 +246,9 @@ void QWebDev::save()
 	file->setTitle(filename.split("/")[filename.split("/").length() - 1]);
 	file->setChanged(false);
 
-	tabs->setTabText(tabs->currentIndex(), file->title());
+	tabs->setTabText(index, file->title());
+
+	return true;
 }
 
 void QWebDev::saveAs()
@@ -210,6 +277,14 @@ void QWebDev::saveAs()
 	tabs->setTabText(tabs->currentIndex(), file->title());
 }
 
+void QWebDev::saveAll()
+{
+	for (int i = 0; i < openFiles.count(); i++)
+	{
+		save(i);
+	}
+}
+
 void QWebDev::closeFile()
 {
 	if (tabs->currentIndex() == -1)
@@ -217,7 +292,7 @@ void QWebDev::closeFile()
 		return;
 	}
 	int i = tabs->currentIndex();
-	if (openFiles[i]->changed())
+	if (openFiles[i]->changed() && openFiles[i]->text() != "")
 	{
 		int ret = QMessageBox::question(this, "Save file?", "Do you want to save this file before you close it?", QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel, QMessageBox::Save);
 		switch (ret)
@@ -247,12 +322,20 @@ void QWebDev::preview()
 	int i = tabs->currentIndex();
 	if (openFiles[i]->changed())
 	{
-		int ret = QMessageBox::question(this, "Save file?", "Do you want to save this file before you preview it?", QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+		int ret = QMessageBox::question(this, "Save file?", "To continue, you will need to save this file. Do you want to save this file now?", QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
 		switch (ret)
 		{
 			case QMessageBox::Yes:
 			{
-				save();
+				if (!this->save())
+				{
+					return;
+				}
+			}
+			break;
+			default:
+			{
+				return;
 			}
 			break;
 		}

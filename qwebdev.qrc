@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/defaults" >
+        <file alias="html.txt" >data/defaults/html.txt</file>
+    </qresource>
+    <qresource prefix="/icons" />
+    <qresource prefix="/icons/22x22" >
+        <file alias="document-new.png" >data/icons/22x22/document-new.png</file>
+        <file alias="document-open.png" >data/icons/22x22/document-open.png</file>
+        <file alias="document-save-all.png" >data/icons/22x22/document-save-all.png</file>
+        <file alias="document-save-as.png" >data/icons/22x22/document-save-as.png</file>
+        <file alias="document-save.png" >data/icons/22x22/document-save.png</file>
+        <file alias="document-close.png" >data/icons/22x22/document-close.png</file>
+        <file alias="video-display.png" >data/icons/22x22/video-display.png</file>
+    </qresource>
+    <qresource prefix="/icons/16x16" >
+        <file alias="document-close.png" >data/icons/16x16/document-close.png</file>
+        <file alias="document-new.png" >data/icons/16x16/document-new.png</file>
+        <file alias="document-open.png" >data/icons/16x16/document-open.png</file>
+        <file alias="document-save-all.png" >data/icons/16x16/document-save-all.png</file>
+        <file alias="document-save-as.png" >data/icons/16x16/document-save-as.png</file>
+        <file alias="document-save.png" >data/icons/16x16/document-save.png</file>
+        <file alias="video-display.png" >data/icons/16x16/video-display.png</file>
+        <file alias="text-html.png" >data/icons/16x16/text-html.png</file>
+        <file alias="text-plain.png" >data/icons/16x16/text-plain.png</file>
+        <file alias="application-exit.png" >data/icons/16x16/application-exit.png</file>
+        <file alias="run-build-configure.png" >data/icons/16x16/run-build-configure.png</file>
+        <file alias="help-about.png" >data/icons/16x16/help-about.png</file>
+        <file alias="help-contents.png" >data/icons/16x16/help-contents.png</file>
+    </qresource>
+</RCC>

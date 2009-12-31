@@ -6,7 +6,11 @@ File::File(QString title, QIcon icon)
 	vIcon = icon;
 	vFilename = "none";
 	vChanged = false;
-	this->setFontFamily("fixed");
+	this->setFont(QFont("monospace", 10));
+}
+
+File::~File()
+{
 }
 
 QIcon File::icon()

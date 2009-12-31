@@ -11,6 +11,7 @@ SOURCES += main.cpp \
     previewwindow.cpp
 HEADERS += qwebdev.h \
     file.h \
-	previewwindow.h
+    previewwindow.h
 FORMS += qwebdev.ui \
     previewwindow.ui
+RESOURCES += qwebdev.qrc

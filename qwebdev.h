@@ -12,6 +12,9 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QMessageBox>
+#include <QMap>
+#include <QStringList>
+#include <QDir>
 
 #include "file.h"
 #include "previewwindow.h"
@@ -34,6 +37,8 @@ protected:
 
 private:
     Ui::QWebDev *ui;
+	QMap<QString, QString> prefs;
+	QMap<QString, QString> defaultPrefs;
 
 	QList<File *> openFiles;
 

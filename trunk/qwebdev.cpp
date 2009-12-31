@@ -7,6 +7,49 @@ QWebDev::QWebDev(QWidget *parent) :
 {
     ui->setupUi(this);
 
+	QDir dir = QDir::homePath() + QString("/.qwebdev/");
+	if (!dir.exists())
+	{
+		dir.mkdir(QDir::homePath() + QString("/.qwebdev/"));
+	}
+
+	defaultPrefs.insert("PreviousFiles", "-1");
+
+	QFile fp(QString(getenv("HOME")) + QString("/.qwebdev/prefs.ini"));
+	fp.open(QIODevice::ReadWrite | QIODevice::Text);
+	QString data = fp.readAll();
+	QStringList l = data.split("\n");
+	for (int i = 0; i < l.count(); i++)
+	{
+		QString d = l[i];
+		QString d1 = d.toStdString().substr(0, d.indexOf("=")).c_str();
+		QString d2 = d.toStdString().substr(d.indexOf("=") + 1, d.count() - 1).c_str();
+		if (d != "")
+		{
+			prefs.insert(d1, d2);
+			if (defaultPrefs.contains(d1))
+			{
+				defaultPrefs.remove(d1);
+			}
+		}
+	}
+
+	QMap<QString, QString>::iterator k;
+	for (k = defaultPrefs.begin(); k != defaultPrefs.end(); ++k)
+	{
+		prefs.insert(k.key(), k.value());
+		QString key = k.key();
+		QString value = k.value();
+		QByteArray data;
+		data.append(key);
+		data.append("=");
+		data.append(value);
+		data.append("\n");
+		fp.write(data);
+	}
+
+	fp.close();
+
 	//ui->menuNew->setIcon(QIcon::fromTheme("document-new", ":/icons/16x16/document-new.png"));
 	ui->menuNew->setIcon(QIcon(":/icons/16x16/document-new.png"));
 
@@ -192,6 +235,7 @@ void QWebDev::newHtmlFile()
 	fp.close();
 	this->newTextFile("New HTML File");
 	openFiles[openFiles.length() - 1]->setText(text);
+	tabs->setCurrentIndex(openFiles.length() - 1);
 }
 
 void QWebDev::open()
@@ -212,6 +256,7 @@ void QWebDev::open()
 	connect(file, SIGNAL(textChanged()), this, SLOT(tChanged()));
 	openFiles.append(file);
 	tabs->addTab(file, file->title());
+	tabs->setCurrentIndex(openFiles.length() - 1);
 }
 
 bool QWebDev::save(int id)
